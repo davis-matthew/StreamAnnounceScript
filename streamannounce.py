@@ -36,14 +36,14 @@ def replace_discord_mentions(text):
 def send_discord_message(content):
     data = {
         "content": content, 
-        "allowed_mentions": 
+        "allowed_mentions":
         {
-            "parse" : [],
-            "roles" : roles,
-            "users" : users
+            "parse": ["everyone","users","roles"],
+            "users": users,
+            "roles": roles
         }
     }
-    print(data)
+
     try:
         response = requests.post(WEBHOOK_URL, json=data)
         if response.status_code != 204:
